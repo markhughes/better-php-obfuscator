@@ -14,10 +14,7 @@
 if (isset($_SERVER["SERVER_SOFTWARE"]) && ($_SERVER["SERVER_SOFTWARE"]!="") ){ echo "<h1>Comand Line Interface Only!</h1>"; die; }
 
 
-const PHP_PARSER_DIRECTORY  = 'PHP-Parser';
-
-
-require_once 'include/check_version.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 require_once 'include/get_default_defined_objects.php';     // include this file before defining something....
 
@@ -29,7 +26,6 @@ require_once 'version.php';
 
 include      'include/retrieve_config_and_arguments.php';
 
-require_once 'include/classes/parser_extensions/my_autoloader.php';
 require_once 'include/classes/parser_extensions/my_pretty_printer.php';
 require_once 'include/classes/parser_extensions/my_node_visitor.php';
 

@@ -1,0 +1,22 @@
+{
+    "name": "markhughes/better-php-obfuscator",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mark Hughes",
+            "email": "markwilliamhughes1@gmail.com"
+        }
+    ],
+    "require": {
+        "nikic/php-parser": "^4.10"
+    },
+    "scripts": {
+        "sample-tests": [
+            "php src/yakpro-po.php ./tests/hello_world/ -o ./dist/hello_world/"
+        ]
+    },
+    "config": {
+        "vendor-dir": "src/vendor"
+    }
+}
