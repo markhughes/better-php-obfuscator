@@ -32,8 +32,8 @@ class Scrambler
     private $scramble_length        = null;     // current length of scrambled names
     private $scramble_length_min    = null;     // min     length of scrambled names
     private $scramble_length_max    = null;     // max     length of scrambled names
-    private $t_ignore               = null;     // array where keys are names to ignore.
-    private $t_ignore_prefix        = null;     // array where keys are prefix of names to ignore.
+    private $t_ignore               = array();     // array where keys are names to ignore.
+    private $t_ignore_prefix        = array();     // array where keys are prefix of names to ignore.
     private $t_scramble             = null;     // array of scrambled items (key = source name , value = scrambled name)
     private $t_rscramble            = null;     // array of reversed scrambled items (key = scrambled name, value = source name)
     private $context_directory      = null;     // where to save/restore context
