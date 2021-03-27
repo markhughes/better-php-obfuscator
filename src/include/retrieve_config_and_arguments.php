@@ -246,7 +246,7 @@ switch(count($t_args))
             {
                 $process_mode       = 'directory';
                 $source_directory   = $source_file;
-                $target_directory   = $target;
+                $target_directory   = realpath($target);
                 if (($target_directory=='') && isset($conf->target_directory)) $target_directory = $conf->target_directory;
                 if ( $target_directory=='')
                 {
