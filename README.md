@@ -1,37 +1,23 @@
-[Cette page en Français](https://github.com/pk-fr/yakpro-po/blob/master/locale/fr/README.md)
+:warning: **Hold your horses! This project is still in development and planning** :warning: 
 
-# YAK Pro - Php Obfuscator
-
-**YAK Pro** stands for **Y**et **A**nother **K**iller **Pro**duct.
+# Better PHP Obfuscator
 
 Free, Open Source, Published under the MIT License.
 
-This tool parses php with the best existing php parser [PHP-Parser 4.x](https://github.com/nikic/PHP-Parser),
-which is an awesome php parsing library written by [nikic](https://github.com/nikic).
 
-You just have to download the zip archive and uncompress it under the PHP-Parser subdirectory,
-or make a git clone ...
+**Better PHP Obfuscator** is an in-progress rewrite and adjustment of YAK Pro. Which was an awesome obfuscator for it's time, but has since been quite neglected and not adjusted for the times.
 
-### Warning:  
-    yakpro-po 2.x works on PhpParser 4.x   
-    it will run on php >= 7.0, obfuscating code for php 5.2 to php 7.3   
-    
-    If you are running php 5.3 or higher,  
-    Please use unsupported [yakpro-po 1.x](https://github.com/pk-fr/yakpro-po/tree/1.x) which works on 1.x branch of PhpParser.   
-    
+To explain further, Better PHP Obfuscator is a great tool to safely store your code, even to use before a PHP encoder such as ionCube, SourceGuardian, or Zend Guard to further protect your code from those who wish to break into your project by modifying the bytecode. 
+
+Unlike traditional obfuscators, Better PHP Obfuscator changes how your code executes, it doesn't just wrap your project in `eval` or make use of `base64_decode`.
 
 
-The yakpro-po.cnf self-documented file contains many configuration options!
-Take a look at it!
+The goals of this project are:
+* Make use of PHP 8, optionaly.
+* Maintain the project.
+* Create implementations for build tools. 
 
-Demo : [yakpro-po demo](https://www.php-obfuscator.com/?demo).
-
-Prerequisites:  php 7.0 or higher, [PHP-Parser 4.x](https://github.com/nikic/PHP-Parser).
-
-Note: This tool has been written in order to obfuscate pure php sources.
-it is not intended to be used with html and embeded php inside 
-(use at your own risks...you may try to deactivate statements shuffling...).
-You can still embed html within php using the echo <<<END ... END; syntax!
+Better PHP Obfuscator makes use of php parser [PHP-Parser](https://github.com/nikic/PHP-Parser) by [@nikic](https://github.com/nikic).
 
 ## What is Php Obfuscation?
 
@@ -43,6 +29,9 @@ You may want, for any reason, that other people do not understand, modify, or ad
 As your software must be understandable by the **php runtime**, but needs to be very difficult
 to understand by human people, obfuscation is a very good way to achieve this goal.
 
+## Legacy Documentation Follows
+
+This will be rewritten and moved to the wiki at some point.
 ### YAK Pro - Php Obfuscator Obfuscation Main Features:
 
 - Removes all comments, indentation, and generates a single line program file.
@@ -59,51 +48,6 @@ to understand by human people, obfuscation is a very good way to achieve this go
 - Recursivly obfuscates a project's directory.
 - Makefile like, timestamps based mechanism, to re-obfuscate only files that were changed since last obfuscation.
 - Many configuration options that let you have **full control** of what is obfuscated within your project!
-
-
-### Why Yet Another Php Obfuscator?
-I began testing some already existing php obfuscation tools, but I did'nt find one that was
-fitting all my needs.
-I wanted a **simple** command line tool, based on a **highly customisable** config file, that would be able to:
-- Be fast and re-obfuscate only files that were changed based on timestamps of files.
-- Preserve some files and/or directories from obfuscation.
-- Not include in the obfuscated target, some files/directories that are present on the source project.
-- Accept lists of names and/or name prefixes to not obfuscate.
-
-So I started to write this tool.
-Version 1.0 has been written within a few days...
-
-
-## Setup:
-    Note: This setup is also valid for Windows 10 Anniversary with bash installed...  
-    1. Prerequisites: git and php-cli (command line interface) packages. 
-       on ubuntu: (adapt according your linux distribution) 
-       # apt install git 
-       # apt install php-cli
-       do not forget to install all other php modules that you are using within your software:
-            for example: apt install php-mysql if you are using mysql... 
-    2. Navigate to the directory where you want to install yakpro-po (/usr/local is a good idea): 
-       # cd /usr/local 
-    3. Then retrieve from GitHub: 
-       # git clone https://github.com/pk-fr/yakpro-po.git 
-    4. Go to the yakpro-po directory: 
-       # cd yakpro-po 
-    5. Then retrieve from GitHub: 
-       # git clone https://github.com/nikic/PHP-Parser.git 
-    6. Check that yakpro-po.php has execute rights, otherwise:
-                                            # chmod a+x yakpro-po.php 
-    7. Create a symbolic link in the /usr/local/bin directory
-       # cd /usr/local/bin 
-       # ln -s /usr/local/yakpro-po/yakpro-po.php yakpro-po 
-    8. You can now run yakpro-po 
-       # yakpro-po --help 
-       # yakpro-po test.php 
-
-    Modify a copy of the yakpro-po.cnf to fit your needs...
-    Read the "Configuration file loading algorithm" section of this document
-    to choose the best location suiting your needs!
-
-    That's it! You're done!
 
 ####
 
