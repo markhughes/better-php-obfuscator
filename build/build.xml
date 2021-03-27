@@ -1,0 +1,23 @@
+<project name="better-php-obfuscator" basedir="." default="build">
+	<target name="build">
+		<pharpackage
+			compression="gzip"
+			destfile="dist/bphpo.phar"
+			stub="build/stub.php"
+			basedir=".">
+			<fileset dir="src">
+				<include name="**/**" />
+                <include name="build/manifest.xml" />
+
+			</fileset>
+			<metadata>
+				<element name="version" value="1.0" />
+				<element name="authors">
+					<element name="Mark Hughes">
+						<element name="e-mail" value="markwilliamhughes1@gmail.com" />
+					</element>
+				</element>
+			</metadata>
+		</pharpackage>
+	</target>
+</project>

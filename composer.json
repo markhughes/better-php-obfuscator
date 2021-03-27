@@ -11,9 +11,13 @@
     "require": {
         "nikic/php-parser": "^4.10"
     },
+    "require-dev": {
+        "phing/phing": "^2.16"
+    },
     "scripts": {
+        "build": "./src/vendor/bin/phing -f build/build.xml",
         "sample-tests": [
-            "php src/yakpro-po.php ./tests/hello_world/ -o ./dist/hello_world/"
+            "php src/bphpo.php ./tests/hello_world/ -o ./dist/hello_world/"
         ]
     },
     "config": {

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phar xmlns="https://phar.io/xml/manifest/1.0">
+    <contains name="markhughes/better-php-obfuscator" version="${version}" type="application"/>
+    <copyright>
+        <author name="Mark Hughes" email="markwilliamhughes1@gmail.com"/>
+        <license type="MIT" url="https://github.com/markhughes/better-php-obfuscator/blob/main/LICENSE.md"/>
+    </copyright>
+    <requires>
+        <php version="^7.3"/>
+    </requires>
+</phar>
