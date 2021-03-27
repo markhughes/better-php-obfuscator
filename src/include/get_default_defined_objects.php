@@ -10,6 +10,7 @@
 //          No warranty of any kind.
 //          Use and abuse at your own risks.
 //========================================================================
+namespace BPHPO;
 
 $t_pre_defined_classes          = array_flip(array_map('strtolower', get_declared_classes()));
 $t_pre_defined_interfaces       = array_flip(array_map('strtolower', get_declared_interfaces()));
@@ -31,10 +32,8 @@ foreach($t_pre_defined_classes as $pre_defined_class_name => $dummy)
     $t_pre_defined_class_properties = array_merge($t_pre_defined_class_properties, $t);
 
     
-    $r = new ReflectionClass($pre_defined_class_name);
+    $r = new \ReflectionClass($pre_defined_class_name);
     $t = $r->getConstants();
     if (count($t)) $t_pre_defined_class_constants_by_class[$pre_defined_class_name] = $t;
     $t_pre_defined_class_constants = array_merge($t_pre_defined_class_constants, $t);
 }
-
-?>

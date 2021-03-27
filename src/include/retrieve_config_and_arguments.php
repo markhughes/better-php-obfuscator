@@ -10,6 +10,7 @@
 //          No warranty of any kind.
 //          Use and abuse at your own risks.
 //========================================================================
+namespace BPHPO;
 
 $t_args                 = $argv;
 $t_yakpro_po_pathinfo   = pathinfo(realpath(array_shift($t_args)));
@@ -246,7 +247,9 @@ switch(count($t_args))
             {
                 $process_mode       = 'directory';
                 $source_directory   = $source_file;
-                $target_directory   = realpath($target);
+                
+                $target_directory   = $target;
+
                 if (($target_directory=='') && isset($conf->target_directory)) $target_directory = $conf->target_directory;
                 if ( $target_directory=='')
                 {
@@ -263,7 +266,6 @@ switch(count($t_args))
         fprintf(STDERR,"Error:\tToo much parameters are specified, I do not know how to deal with that!!!%s",PHP_EOL);
         exit(17);
 }
-//print_r($t_args);
 
 if (!$conf->silent) fprintf(STDERR,"Info:\tProcess Mode\t\t= %s%s",$process_mode,PHP_EOL);
 switch($process_mode)
@@ -277,6 +279,3 @@ switch($process_mode)
         if (!$conf->silent) fprintf(STDERR,"Info:\ttarget_directory\t= [%s]%s",$target_directory,PHP_EOL);
         break;
 }
-
-
-?>

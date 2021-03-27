@@ -11,24 +11,26 @@
 //          No warranty of any kind.
 //          Use and abuse at your own risks.
 //========================================================================
+namespace BPHPO;
+
+use \PhpParser\Error;
+use \PhpParser\ParserFactory;
+use \PhpParser\NodeTraverser;
+use \PhpParser\PrettyPrinter;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
 if (isset($_SERVER["SERVER_SOFTWARE"]) && ($_SERVER["SERVER_SOFTWARE"]!="") ){ echo "<h1>Comand Line Interface Only!</h1>"; die; }
 
-
-require_once __DIR__ . '/vendor/autoload.php';
-
-require_once 'include/get_default_defined_objects.php';     // include this file before defining something....
+$yakpro_po_version = (string) \Jean85\PrettyVersions::getVersion('markhughes/better-php-obfuscator');
 
 
-require_once 'include/classes/config.php';
-require_once 'include/classes/scrambler.php';
-require_once 'include/functions.php';
-require_once 'version.php';
+require_once __DIR__ . '/../include/get_default_defined_objects.php';     // include this file before defining something....
 
-include      'include/retrieve_config_and_arguments.php';
 
-require_once 'include/classes/parser_extensions/my_pretty_printer.php';
-require_once 'include/classes/parser_extensions/my_node_visitor.php';
+require_once __DIR__ . '/../include/functions.php';
 
+include      __DIR__ . '/../include/retrieve_config_and_arguments.php';
 
 if ($clean_mode && file_exists("$target_directory/yakpro-po/.yakpro-po-directory") )
 {
@@ -37,10 +39,6 @@ if ($clean_mode && file_exists("$target_directory/yakpro-po/.yakpro-po-directory
     exit(31);
 }
 
-use PhpParser\Error;
-use PhpParser\ParserFactory;
-use PhpParser\NodeTraverser;
-use PhpParser\PrettyPrinter;
 
 switch($conf->parser_mode)
 {
@@ -56,8 +54,8 @@ $parser = (new ParserFactory)->create($parser_mode);
 
 $traverser          = new NodeTraverser;
 
-if ($conf->obfuscate_string_literal)    $prettyPrinter      = new myPrettyprinter;
-else                                    $prettyPrinter      = new PrettyPrinter\Standard;
+if ($conf->obfuscate_string_literal)    $prettyPrinter      = new MyPrettyPrinter();
+else                                    $prettyPrinter      = new PrettyPrinter\Standard();
 
 $t_scrambler = array();
 //foreach(array('variable','function','method','property','class','class_constant','constant','label') as $scramble_what)
@@ -104,5 +102,3 @@ switch($process_mode)
         obfuscate_directory($source_directory,"$target_directory/yakpro-po/obfuscated");
         exit(0);
 }
-
-?>

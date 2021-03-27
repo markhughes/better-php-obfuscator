@@ -10,6 +10,7 @@
 //          No warranty of any kind.
 //          Use and abuse at your own risks.
 //========================================================================
+namespace BPHPO;
 
 // when we use the word ignore, that means that it is ignored during the obfuscation process (i.e. not obfuscated)
 
@@ -134,5 +135,3 @@ class Config
         if (!is_array($this->t_ignore_pre_defined_classes) && ( $this->t_ignore_pre_defined_classes != 'none')) $this->t_ignore_pre_defined_classes = 'all';
     }
 }
-
-?>

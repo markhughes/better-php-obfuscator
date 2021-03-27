@@ -10,6 +10,7 @@
 //          No warranty of any kind.
 //          Use and abuse at your own risks.
 //========================================================================
+namespace BPHPO;
 
 // case-sensitive:      variable names, constant name, array keys, class properties, labels
 // case-insensitive:    function names, class names, class method names, namespaces, keywords and constructs
@@ -425,5 +426,3 @@ class Scrambler
         return $prefix.($this->label_counter++);
     }
 }
-
-?>

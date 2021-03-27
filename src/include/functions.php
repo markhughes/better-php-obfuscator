@@ -1,4 +1,7 @@
 <?php
+
+namespace BPHPO;
+
 //========================================================================
 // Author:  Pascal KISSIAN
 // Resume:  http://pascal.kissian.net
@@ -42,7 +45,7 @@ function obfuscate($filename)                   // takes a file_path as input, r
         {
             $stmts  = $parser->parse($source);  // PHP-Parser returns the syntax tree
         }
-        catch (PhpParser\Error $e)                              // if an error occurs, then redo it without php_strip_whitespace, in order to display the right line number with error!
+        catch (\PhpParser\Error $e)                              // if an error occurs, then redo it without php_strip_whitespace, in order to display the right line number with error!
         {
             $source = file_get_contents($filename);
             $stmts  = $parser->parse($source);
@@ -61,7 +64,7 @@ function obfuscate($filename)                   // takes a file_path as input, r
             $last_use_stmt_pos = -1;
             foreach($stmts as $i => $stmt)                      // if a use statement exists, do not shuffle before the last use statement
             {                                                   //TODO: enhancement: keep all use statements at their position, and shuffle all sub-parts
-                if ( $stmt instanceof PhpParser\Node\Stmt\Use_ ) $last_use_stmt_pos = $i;
+                if ( $stmt instanceof \PhpParser\Node\Stmt\Use_ ) $last_use_stmt_pos = $i;
             }
 
             if ($last_use_stmt_pos<0)   { $stmts_to_shuffle = $stmts;                                   $stmts = array();                                       }
@@ -346,7 +349,7 @@ function shuffle_statements($stmts)
     
     $scrambler              = $t_scrambler['label'];
     $label_name_prev        = $scrambler->scramble($scrambler->generate_label_name());
-    $first_goto             = new PhpParser\Node\Stmt\Goto_($label_name_prev);
+    $first_goto             = new \PhpParser\Node\Stmt\Goto_($label_name_prev);
     $t                      = array();
     $t_chunk                = array();
     for($i=0;$i<$n;++$i)
@@ -354,9 +357,9 @@ function shuffle_statements($stmts)
         $t_chunk[]              = $stmts[$i];
         if (count($t_chunk)>=$chunk_size)
         {
-            $label              = array(new PhpParser\Node\Stmt\Label($label_name_prev));
+            $label              = array(new \PhpParser\Node\Stmt\Label($label_name_prev));
             $label_name         = $scrambler->scramble($scrambler->generate_label_name());
-            $goto               = array(new PhpParser\Node\Stmt\Goto_($label_name));
+            $goto               = array(new \PhpParser\Node\Stmt\Goto_($label_name));
             $t[]                = array_merge($label,$t_chunk,$goto);
             $label_name_prev    = $label_name;
             $t_chunk            = array();
@@ -364,15 +367,15 @@ function shuffle_statements($stmts)
     }
     if (count($t_chunk)>0)
     {
-        $label              = array(new PhpParser\Node\Stmt\Label($label_name_prev));
+        $label              = array(new \PhpParser\Node\Stmt\Label($label_name_prev));
         $label_name         = $scrambler->scramble($scrambler->generate_label_name());
-        $goto               = array(new PhpParser\Node\Stmt\Goto_($label_name));
+        $goto               = array(new \PhpParser\Node\Stmt\Goto_($label_name));
         $t[]                = array_merge($label,$t_chunk,$goto);
         $label_name_prev    = $label_name;
         $t_chunk            = array();
     }
     
-    $last_label             = new PhpParser\Node\Stmt\Label($label_name);
+    $last_label             = new \PhpParser\Node\Stmt\Label($label_name);
     shuffle($t);
     $stmts = array();
     $stmts[] = $first_goto;
@@ -392,5 +395,3 @@ function remove_whitespaces($str)
     unlink($tmp_filename);
     return $str;
 }
-
-?>
