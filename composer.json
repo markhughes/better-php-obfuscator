@@ -18,7 +18,9 @@
     "scripts": {
         "build": "./src/vendor/bin/phing -f build/build.xml",
         "sample-tests": [
-            "php src/cli/bphpo.php ./tests/hello_world/ -o ./dist/hello_world/"
+            "php src/cli/bphpo.php ./tests/hello_world/ -o ./dist/tests/hello_world/",
+            "php src/cli/bphpo.php ./tests/many_classes/ -o ./dist/tests/many_classes/",
+            "php src/cli/bphpo.php ./tests/function_exists/ -o ./dist/tests/function_exists/"
         ]
     },
     "config": {
