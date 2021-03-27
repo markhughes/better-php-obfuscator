@@ -20,7 +20,10 @@
         "sample-tests": [
             "php src/cli/bphpo.php ./tests/hello_world/ -o ./dist/tests/hello_world/",
             "php src/cli/bphpo.php ./tests/many_classes/ -o ./dist/tests/many_classes/",
-            "php src/cli/bphpo.php ./tests/function_exists/ -o ./dist/tests/function_exists/"
+            "php src/cli/bphpo.php ./tests/function_exists/ -o ./dist/tests/function_exists/",
+            "php src/cli/bphpo.php ./tests/inbuilt/ -o ./dist/tests/inbuilt/",
+            "php src/cli/bphpo.php ./tests/defined/ -o ./dist/tests/defined/"
+            
         ]
     },
     "config": {
